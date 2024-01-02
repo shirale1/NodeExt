@@ -137,6 +137,37 @@ namespace ConsoleApp1
             //מחברים את הנקסט  לחולייה החדשה
             lst.SetNext(newnode);
         }
+        public static Node<int> Create(int from, int to, int quantity)//פעוך שמקבלת מספר מ- ועד וכמות ויוצרת שרשרת חוליות באורך הכמות שהמספרים בה הם בין הערכים שקיבלנו
+        {
+            Random random = new Random();
+            Node<int> head = new Node<int>(random.Next(from, to + 1));
+
+            for (int i = 0; i < quantity; i++)
+            {
+                head = new Node<int>(random.Next(from, to + 1), head);
+
+            }
+            return head;
+        }
+       public static Node<T> DeleteValue<T>(Node<T> lst, T value)
+        {
+            Node<T> head = lst;
+            if(lst.GetValue().Equals(value))
+            {
+                head = lst.GetNext();
+                lst.SetNext(null);
+                return head;
+            }
+            Node<T> next = lst.GetNext();
+            while (lst.HasNext() && !next.GetValue().Equals(value))
+            {
+                lst = next;
+                next = lst.GetNext();
+            }
+            lst.SetNext(next.GetNext());
+            next.SetNext(null);
+            return next;
+        }
     }
 }
 
