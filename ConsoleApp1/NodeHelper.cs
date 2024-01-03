@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -149,9 +150,13 @@ namespace ConsoleApp1
             }
             return head;
         }
-       public static Node<T> DeleteValue<T>(Node<T> lst, T value)
+       public static Node<T> DeleteValue<T>(Node<T> lst, T value) //מחיקת חולייה בעלת הערך שהתקבל
         {
             Node<T> head = lst;
+            if (lst == null)
+            {
+                return head;
+            }
             if(lst.GetValue().Equals(value))
             {
                 head = lst.GetNext();
@@ -166,7 +171,7 @@ namespace ConsoleApp1
             }
             lst.SetNext(next.GetNext());
             next.SetNext(null);
-            return next;
+            return head;
         }
     }
 }
