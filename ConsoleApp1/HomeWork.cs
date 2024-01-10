@@ -85,7 +85,7 @@ namespace ConsoleApp1
         //הרשימה השנייה תישאר ללא שינוי
         public static Node<int> Delete2From1(Node<int> lst1, Node<int> lst2)
         {
-
+            //הערה
             Node<int> head1 = lst1;
             Node<int> head2 = lst2;
             while(lst1!= null)
