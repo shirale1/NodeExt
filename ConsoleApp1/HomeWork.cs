@@ -94,6 +94,42 @@ namespace ConsoleApp1
             }
             //לעשות פעולת עזר שמחזירה את המיקום בחוליה הגדולה של תחילת החולייה הקטנה 
             //לנתק את כל הרצף
+            //לסיים את הפעולה
         }
+        public static Node<T> Merge<T>(Node<T> lst1, Node<T> lst2)
+            //n אורך השרשרת lst1
+            //m אורך השרשרת lst2
+            //o(min(m/n)) +0(|m-n|) 
+            //o(max(n,m))
+            //  אפשר גם להגדיר את אורך הקלט לאורך השרשרת הגדולה                             
+
+        {
+           Node<T> head= new Node<T>(lst1.GetValue());
+              lst1=lst1.GetNext();
+            Node<T> current = head;
+            while(lst2!= null && lst1 != null)
+            {
+                current.SetNext(new Node<T>(lst2.GetValue())); 
+                current = current.GetNext();
+                current.SetNext(new Node<T>(lst1.GetValue()));
+                current = current.GetNext();
+                lst1 = lst1.GetNext();
+                lst2 = lst2.GetNext();
+            }
+            while(lst1!= null)
+            {
+                current.SetNext(new Node<T>(lst1.GetValue())); 
+                current = current.GetNext();
+                lst1 = lst1.GetNext();
+            }
+            while (lst2 != null)
+            {
+                current.SetNext(new Node<T>(lst2.GetValue()));
+                current = current.GetNext();
+                lst2 = lst2.GetNext();
+            }
+            return head;
+        }
+
     }
 }
